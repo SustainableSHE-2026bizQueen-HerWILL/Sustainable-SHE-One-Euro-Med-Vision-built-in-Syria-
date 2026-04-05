@@ -7,247 +7,55 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body { font-family: 'Tajawal', system-ui, sans-serif; }
-    .hero-bg { background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)); }
-    .card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card:hover { transform: translateY(-12px) scale(1.03); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
-    .icon-btn { transition: all 0.3s ease; }
-    .icon-btn:hover { transform: scale(1.25); color: #15803d; }
-    .logo-hero { transition: transform 0.6s ease; }
-    .logo-hero:hover { transform: scale(1.08) rotate(4deg); }
-  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50">
 
   <!-- Header -->
   <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <img src="sustainable-she-logo.png" alt="Sustainable SHE" class="h-10">
-        <span class="font-semibold text-xl">Sustainable SHE</span>
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <img src="images/sustainable-she-logo.png" alt="Sustainable SHE" class="h-12">
+        <span class="text-2xl font-semibold text-[#15803d]">Sustainable SHE</span>
       </div>
-      <div class="flex items-center gap-2 bg-gray-100 rounded-full p-1 text-sm">
-        <button onclick="switchLanguage('en')" id="btn-en" class="px-5 py-2 rounded-full font-medium transition-all">EN</button>
-        <button onclick="switchLanguage('ar')" id="btn-ar" class="px-5 py-2 rounded-full font-medium transition-all bg-white shadow">عربي</button>
-      </div>
+      <nav class="flex gap-8 text-lg">
+        <a href="index.html" class="hover:text-[#15803d]">الرئيسية</a>
+        <a href="about.html" class="hover:text-[#15803d]">عن المبادرة</a>
+        <a href="entrepreneurs.html" class="hover:text-[#15803d]">رائداتنا</a>
+        <a href="impact.html" class="hover:text-[#15803d]">قصص التأثير</a>
+        <a href="contact.html" class="hover:text-[#15803d]">تواصلي معنا</a>
+      </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="hero-bg h-screen flex items-center justify-center text-white text-center">
-    <div class="max-w-4xl px-6">
-      <img src="sustainable-she-logo.png" alt="Sustainable SHE" class="logo-hero mx-auto h-48 md:h-64 mb-8">
+  <section class="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 flex items-center justify-center text-white text-center px-6">
+    <div class="max-w-4xl">
       <h1 class="text-5xl md:text-6xl font-bold mb-6">Sustainable SHE</h1>
-      <p class="text-2xl md:text-3xl mb-4">Syrian Women Building Real Businesses</p>
-      <p class="text-xl max-w-2xl mx-auto">18+ entrepreneurs. One Euro-Med commitment. Built inside Syria.</p>
-      <p class="mt-8 text-lg font-medium">"Her zip code is Syria. Her market is the world."</p>
+      <p class="text-3xl mb-8">Syrian Women Building Real Businesses</p>
+      <p class="text-xl mb-12">"Her zip code is Syria. Her market is the world."</p>
+      
       <a href="https://forms.gle/VLAGiaLxqY2WoTAy9" target="_blank" 
-         class="mt-10 inline-block px-10 py-4 bg-white text-green-800 font-semibold rounded-3xl hover:bg-green-100 transition-colors">
-        Join the Community – شاركي معنا
+         class="mt-12 inline-block px-12 py-5 bg-white text-[#15803d] font-semibold rounded-3xl text-xl hover:bg-green-100">
+        انضمي إلى المجتمع
       </a>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="py-20 px-6 max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl font-semibold mb-8">عن المبادرة</h2>
-    <p class="text-lg leading-relaxed">
-      Sustainable SHE is a women's economic empowerment initiative led by Fatima Almoustafa through the Young Civil Society Leadership Programme (YCSLP) — bringing business training, digital marketing skills, and international visibility to Syrian women entrepreneurs for the first time.
-    </p>
-  </section>
-
-  <!-- Shipping Filter -->
-  <section class="py-8 bg-white border-b">
-    <div class="max-w-7xl mx-auto px-6 flex flex-wrap gap-3 justify-center" id="shipping-filters">
-      <button onclick="filterByShipping('all')" class="active-filter px-6 py-2 rounded-full border border-green-700 text-green-700">All</button>
-      <button onclick="filterByShipping('governorate')" class="px-6 py-2 rounded-full border">Within Governorate</button>
-      <button onclick="filterByShipping('between')" class="px-6 py-2 rounded-full border">Between Governorates</button>
-      <button onclick="filterByShipping('international')" class="px-6 py-2 rounded-full border">International Ready</button>
-    </div>
-  </section>
-
-  <!-- Entrepreneurs Grid -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-semibold text-center mb-12">Our Entrepreneurs</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="entrepreneurs-grid"></div>
-    </div>
-  </section>
-
-  <!-- Impact Stories -->
-  <section class="py-20 bg-[#15803d] text-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-semibold text-center mb-12">Impact Stories</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="impact-grid"></div>
-    </div>
-  </section>
-
-  <!-- Join Community -->
-  <section class="py-16 bg-white text-center">
-    <a href="https://forms.gle/VLAGiaLxqY2WoTAy9" target="_blank" 
-       class="inline-block px-12 py-5 bg-green-700 hover:bg-green-800 text-white text-xl font-semibold rounded-3xl transition-colors">
-      Join the Community – شاركي معنا
-    </a>
-  </section>
-
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-16">
+  <footer class="bg-gray-900 text-white py-12">
     <div class="max-w-5xl mx-auto px-6 text-center">
-      <div class="flex flex-wrap justify-center gap-10 mb-10">
-        <img src="anna-lindh-logo.png" alt="Anna Lindh Foundation" class="h-16">
-        <img src="med-dialogue-logo.png" alt="Med Dialogue" class="h-16">
+      <div class="flex justify-center gap-12 mb-8">
+        <img src="images/anna-lindh-logo.png" alt="Anna Lindh Foundation" class="h-14">
+        <img src="images/med-dialogue-logo.png" alt="Med Dialogue" class="h-14">
       </div>
-      <p class="text-xl mb-6">مدعوم من Heroil</p>
-      <p class="text-sm opacity-75">© 2026 Sustainable SHE – All rights reserved</p>
-      <p class="mt-4">Contact: bshemeans@gmail.com</p>
+      <p class="text-xl mb-6">مدعوم من HerWILL و Heroil</p>
+      <p class="text-sm opacity-75">© 2026 Sustainable SHE – جميع الحقوق محفوظة</p>
+      <div class="flex justify-center gap-8 mt-8 text-3xl">
+        <a href="mailto:bshemeans@gmail.com" class="hover:text-white"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.instagram.com/bizqueen2026" target="_blank" class="hover:text-white"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
   </footer>
 
-  <!-- Modal -->
-  <div id="modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-    <div class="bg-white max-w-lg w-full mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-auto">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-4xl text-gray-400 hover:text-gray-600">×</button>
-      <div id="modal-content" class="text-gray-800"></div>
-    </div>
-  </div>
-
-  <script>
-    let currentLang = 'ar';
-
-    const translations = {
-      en: {
-        aboutTitle: "About the Initiative",
-        entrepreneursTitle: "Our Entrepreneurs",
-        impactTitle: "Impact Stories"
-      },
-      ar: {
-        aboutTitle: "عن المبادرة",
-        entrepreneursTitle: "رائدات أعمالنا",
-        impactTitle: "قصص التأثير"
-      }
-    };
-
-    // جميع الـ 18 مشروع مع كل التفاصيل (أرقام واتساب، روابط، صور)
-    const entrepreneurs = [
-      {
-        project: "Amal Initiative",
-        founder: "Rama Mohammad Amin Al-Saffan",
-        tagline: "A training center for women of all ages",
-        bio: "توفي والدي عندما كنت في الـ18، فأصبحت المعيل الوحيد لأمي. أنشأت مركز أمل لتدريب النساء على محو الأمية والمهارات والدعم النفسي.",
-        shipping: "governorate",
-        whatsapp: "https://wa.me/963992530035",
-        social: "",
-        profileImg: "https://drive.google.com/uc?export=view&id=1WOstu3GaRaoSmXqDLRdTvJGibwblsIN9",
-        productImg: "https://drive.google.com/uc?export=view&id=1SK6cpJPfyDbDEJK6BRK-hSzsqTH4U64x"
-      },
-      {
-        project: "Reemuseum",
-        founder: "Reem Khaddour Hussein",
-        tagline: "I turn tiny pieces of people into art",
-        bio: "أحول قطع صغيرة من الناس إلى فن. أصنع إكسسوارات سيراميك وحقائب مطرزة.",
-        shipping: "between",
-        whatsapp: "https://wa.me/963938190994",
-        social: "https://www.instagram.com/reemuseum",
-        profileImg: "https://drive.google.com/uc?export=view&id=1nvEb6TGS6mdaFljlLipY5mhNUVytCnWm",
-        productImg: "https://drive.google.com/uc?export=view&id=1HY8B98EgujYn9m1cvS3aLBYJ48khNHIt"
-      },
-      {
-        project: "Sawsan Handmade Gifts",
-        founder: "Sawsan Alamin",
-        tagline: "Handmade bags and gifts using threads, pearl beads, and crystals",
-        bio: "بدأت برأس مال صغير. أصنع حقائب من خرز ولؤلؤ وكريستال.",
-        shipping: "between",
-        whatsapp: "https://wa.me/963950092280",
-        social: "https://www.facebook.com/share/18BCNVgSgC/",
-        profileImg: "https://drive.google.com/uc?export=view&id=14GXzzy5-A-sXiw010vXMkYKxaYHHw7xa",
-        productImg: "https://drive.google.com/uc?export=view&id=1TJfn5zsJpOuatZUUVlZhjQ866z2xpYRu"
-      },
-      {
-        project: "Faten Rituals",
-        founder: "Faten",
-        tagline: "Natural soap and personal care products",
-        bio: "بدأ المشروع من شغفي بالصابون الطبيعي وارتباطه بعملي في الصحة النفسية.",
-        shipping: "between",
-        whatsapp: "https://wa.me/963954188035",
-        social: "",
-        profileImg: "https://drive.google.com/uc?export=view&id=132m8tzg2kkaeicWPkKQ8Ooq2U2LDjOZh",
-        productImg: "https://drive.google.com/uc?export=view&id=1Q7gUKzyMJhhgGzNmYIJ9AflsvW7AwZDA"
-      },
-      {
-        project: "Reamé",
-        founder: "Nour Shakhashiro",
-        tagline: "Upcycling used clothing through painting",
-        bio: "أعيد تدوير الملابس القديمة بالرسم لدعم إعادة الاستخدام والفن.",
-        shipping: "international",
-        whatsapp: "https://wa.me/963983123723",
-        social: "https://www.instagram.com/re.a.m.e",
-        profileImg: "https://drive.google.com/uc?export=view&id=1Khhh8_KqgxkSYqErJ-rm1o_x6Z20wtqI",
-        productImg: "https://drive.google.com/uc?export=view&id=1PH0EVwKv2AclgEQJnm--6mlBTL07ls0L"
-      },
-      // باقي المشاريع (Dream Catcher GH, Wisam for Handmade, Graphic Design, Hanadi Made, Tricot Fabric, Qabas Roses, Memento, Training and Youth Empowerment, Velvety Touches, Tabeeyat Maa Alhayat, Concrete Gallery, Rozita, Tamayyazi, Nour's Accessories, Yasmena) موجودة في الكود الكامل.
-      // لتوفير المساحة هنا، أكملت 5 فقط كمثال. أرسلي "أكمل الكود" إذا أردتِ الـ 18 كاملة دفعة واحدة.
-    ];
-
-    function switchLanguage(lang) {
-      currentLang = lang;
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-      // يمكن توسيع الترجمات حسب الحاجة
-    }
-
-    function renderGrid(filtered = entrepreneurs) {
-      const grid = document.getElementById('entrepreneurs-grid');
-      grid.innerHTML = filtered.map(e => `
-        <div class="card bg-white rounded-3xl overflow-hidden shadow-md">
-          <img src="${e.productImg}" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h3 class="font-semibold text-xl">${e.project}</h3>
-            <p class="text-gray-600">${e.founder}</p>
-            <p class="italic text-sm mt-3">"${e.tagline}"</p>
-            
-            <div class="flex gap-6 mt-6 justify-center text-4xl">
-              \( {e.whatsapp ? `<a href=" \){e.whatsapp}" target="_blank" class="icon-btn text-green-600"><i class="fab fa-whatsapp"></i></a>` : ''}
-              \( {e.social ? `<a href=" \){e.social}" target="_blank" class="icon-btn text-pink-600"><i class="fab fa-instagram"></i></a>` : ''}
-            </div>
-            
-            <button onclick="showModal('\( {e.project}', ' \){e.bio}', '\( {e.whatsapp}', ' \){e.social}')" 
-                    class="mt-6 w-full py-3 bg-green-700 hover:bg-green-800 text-white rounded-2xl transition-colors">
-              اقرأ القصة الكاملة
-            </button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function showModal(project, bio, whatsapp, social) {
-      const content = document.getElementById('modal-content');
-      content.innerHTML = `
-        <h3 class="text-2xl font-bold mb-4">${project}</h3>
-        <p class="leading-relaxed mb-8">${bio}</p>
-        <div class="flex gap-8 justify-center text-5xl">
-          \( {whatsapp ? `<a href=" \){whatsapp}" target="_blank" class="icon-btn text-green-600"><i class="fab fa-whatsapp"></i></a>` : ''}
-          \( {social ? `<a href=" \){social}" target="_blank" class="icon-btn text-pink-600"><i class="fab fa-instagram"></i></a>` : ''}
-        </div>
-      `;
-      document.getElementById('modal').classList.remove('hidden');
-    }
-
-    function closeModal() {
-      document.getElementById('modal').classList.add('hidden');
-    }
-
-    function filterByShipping(type) {
-      let filtered = entrepreneurs;
-      if (type !== 'all') {
-        filtered = entrepreneurs.filter(e => e.shipping === type);
-      }
-      renderGrid(filtered);
-    }
-
-    window.onload = () => {
-      renderGrid();
-    };
-  </script>
 </body>
-        </html>
+</html>
